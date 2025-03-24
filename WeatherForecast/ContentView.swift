@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        HStack{
-            DayForecast(day: "Mon", color: Color.yellow, symbol: "sun.max.fill", high: 70, low: 50)
-            DayForecast(day: "Tue", color: Color.blue, symbol: "cloud.rain.fill", high: 60, low: 40)
+        HStack {
+            DayForecast(day: "Mon", isRainy: false, high: 70, low: 50)
+            DayForecast(day: "Tue", isRainy: true, high: 60, low: 40)
         }
     }
 }
@@ -22,11 +22,26 @@ struct ContentView: View {
 
 struct DayForecast: View {
     let day: String
-    let color: Color
-    let symbol: String
+    let isRainy: Bool
     let high: Int
-    let low : Int
-    
+    let low: Int
+
+    var color: Color {
+        if isRainy {
+            Color.blue
+        } else {
+            Color.yellow
+        }
+    }
+
+    var symbol: String {
+        if isRainy {
+            "cloud.rain.fill"
+        } else {
+            "sun.max.fill"
+        }
+    }
+
     var body: some View {
         VStack {
             Text(day)
