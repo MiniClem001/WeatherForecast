@@ -28,9 +28,9 @@ struct DayForecast: View {
 
     var color: Color {
         if isRainy {
-            Color.blue
+            .blue
         } else {
-            Color.yellow
+            .yellow
         }
     }
 
@@ -45,10 +45,15 @@ struct DayForecast: View {
     var body: some View {
         VStack {
             Text(day)
+                .font(.headline)
             Image(systemName: symbol)
                 .foregroundStyle(color)
+                .font(.largeTitle)
             Text("High: \(high)°")
+                .fontWeight(.semibold)
             Text("Low: \(low)°")
+                .fontWeight(.medium)
+                .foregroundStyle(.secondary)
         }
         .padding()
     }
